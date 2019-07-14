@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="/stylesheets/displaymovie.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <title>Movie Mela</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">MovieMela</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <%if(currentUser){%>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/myfavourite/<%=currentUser._id%>">Favourite</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+
+                <%}else{%>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">Log in</a>
+                </li>
+                <%}%>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" action="/search">
+                        <input class="form-control mr-sm-2" type="text" name="name" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+        </div>
+     </nav>
+
+    <div class="outer" style="background-image:radial-gradient(circle at 20% 50%, rgba(11.76%, 15.29%, 17.25%, 0.80) 0%, rgba(19.61%, 21.96%, 23.53%, 0.70) 100%),url(https://image.tmdb.org/t/p/w1000_and_h563_face<%=data["backdrop_path"]%>);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover">
+                <div class="row" style="width:100%">
+                    <div class=" col-lg-4 first">
+                        <img class="img-tag"
+                            src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/<%=data["poster_path"]%>"
+                            alt="<%=data["original_title"]%>">
+                    </div>
+                    <div class="col-lg-6 second">
+                        <h1 class="heading"><strong class="required-text">
+                                <% if(data["original_title"]){%>
+                                <%=data["original_title"]%>
+                                <%}else{%>
+                                <%=data["original_name"]%>
+                                <%}%>
+                    </strong>
+                   <span>(<%=data["release_date"].substring(0,4)%>)</span>
+                        </h1>
+                        <p class="overview-head" id="kartik">Overview
+                            <%if(currentUser){%>
+                            <form class='addtofavourite'
+                                action="/favourite/<%=currentUser._id%>/name/<%=data['original_title']%>/poster<%=data['poster_path']%>/tag/<%=data['id']%>"
+                                method="POST">
+                                <button id="switch" class=".add_to_account_list"><i class="fas fa-star"></i>
+                                    <%if(isdisplay==0){%>
+                                    <span id="switch-text">Add to Favourite</span>
+                                    <%}else{%>
+                                    <span id="switch-text">Remove from Favourite</span>
+                                    <%}%>
+                                </button>
+                            </form>
+                            <%}%>
+                        </p>
+                        <p class="overview-txt"><%=data["overview"]%></p>
+                        <div class="row" style="font-size: 1.1em;">
+                            <ul class="ul-style">
+                                <li>
+                                    <div class="info">
+                                        <p class="info-head">Runtime</p>
+                                        <p><%=data["runtime"]%> min</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info">
+                                        <p class="info-head">Budget</p>
+                                        <p>$<%=data["budget"]%></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info">
+                                        <p class="info-head">Revenue</p>
+                                        <p>$<%=data["revenue"]%></p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="genre">
+                                <%data.genres.forEach((element)=>{%>
+                                <li>
+                                    <div class="info">
+                                        <p><%=element["name"]%></p>
+                                    </div>
+                                </li>
+                                <%})%>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="topcast">
+                        <h1>Top Cast</h1>
+                    </div>
+                    <%for(var i=0;i<4;i++){%>
+                    <div class="cell">
+                        <div class="card" style="width: 138px;;">
+                            <%if(cast[i]){%>
+                            <img class="card-img-top"
+                                src="https://image.tmdb.org/t/p/w138_and_h175_face/<%=cast[i]["profile_path"]%>"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <p class="cast-head"><a class="cast-link"
+                                        href="/person/<%=cast[i]["id"]%>"><%=cast[i]["name"]%></a></p>
+                                <p class="cast-text"><%=cast[i]["character"]%></p>
+                            </div>
+                            <%}%>
+                        </div>
+                    </div>
+                    <%}%>
+                        </div>
+                        <div class="trailer">
+                            <div class="row">
+                                <%for(var i=0;i<3;i++){%>
+                                <%if(data.videos.results[i]){%>
+                                <div class="col-sm-4" style="margin-bottom:1em;">
+                                    <iframe width="100%" height="100%" frameborder="0" allowfullscreen
+                                        src="https://www.youtube.com/embed/<%=data.videos.results[i]["key"]%>"
+                                        style="margin-bottom:1em;">
+                                    </iframe>
+                                    <%}%>
+            </div>
+            <%}%>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <script>
+                    $(".addtofavourite").submit(function (e) {
+                        e.preventDefault();
+                        const actionUrl = $(this).attr('action');
+                        const newtext = $(this).find("#switch-text").text();
+                        if (newtext == 'Add to Favourite') {
+                            $(this).find("#switch-text").text('Remove from Favourite');
+                        } else {
+                            $(this).find("#switch-text").text('Add to Favourite');
+                        }
+                        check();
+                        $.ajax({
+                            url: actionUrl,
+                            data: name,
+                            type: 'PUT',
+                            success: function (data) {
+                                // console.log(data);
+                            }
+                        });
+                    })
+
+                    check();
+
+                    function check() {
+                        var t = $("#switch-text").text();
+                        if (t == 'Remove from Favourite') {
+                            $('#switch').addClass('star');
+                        } else {
+                            $('#switch').removeClass('star');
+                        }
+                    }
+                </script>
+
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                    crossorigin="anonymous">
+                    </script>
+</body>
+
+</html>

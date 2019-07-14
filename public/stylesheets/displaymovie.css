@@ -1,0 +1,282 @@
+div.col-lg-4.first {
+    width: 300px;
+    height: 450px;
+    line-height: 0;
+    margin-left: 1em;
+    margin-right: 1em;
+    display: block;
+    /* overflow: hidden; */
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#switch {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+}
+
+#switch-text {
+    color: white;
+
+}
+
+.star {
+    color: yellow !important;
+    background: transparent;
+}
+
+.col-lg-8.second {
+    width: 700px;
+    height: 500px;
+    line-height: 0;
+    color: aliceblue !important;
+    padding: 1em;
+    display: block;
+    overflow: hidden;
+}
+
+.overview {
+    width: 700px;
+    height: 450px;
+    padding: 1em;
+}
+
+.overview span {
+    opacity: 0.6;
+    font-size: 0.7em;
+}
+
+.overview-head {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    margin-top: 1.4em;
+    font-weight: 900;
+}
+
+.overview-txt {
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 1.1em;
+    line-height: 1.2em;
+    margin-top: 30px;
+}
+
+.overview>li {
+    display: flex;
+    font-size: 1.1em !important;
+}
+
+.outer {
+    width: 100%;
+    height: 535px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: aliceblue;
+    align-items: center;
+    margin-top: 2em;
+    padding: 5em;
+    background-color: rgba(0, 0, 0, 0.493);
+}
+
+div.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    height: 400px;
+}
+
+.cell {
+    flex-grow: 0.25;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+@media (max-width: 720px) {
+    .cell {
+        width: calc(50% - 2px)
+    }
+}
+
+@media (max-width: 360px) {
+    .cell {
+        width: calc(100% - 2px)
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .img-tag {
+        width: 185px;
+        height: 278px;
+        line-height: 0;
+        overflow: hidden;
+    }
+
+    div.col-lg-4.first {
+        width: 185px;
+        height: 278px;
+        line-height: 0;
+        margin-left: 1em;
+        margin-right: 1em;
+        display: block;
+        /* overflow: hidden; */
+    }
+
+    .outer {
+        height: 400px;
+        align-content: center;
+    }
+
+    div.info {
+        color: black;
+    }
+
+    .second {
+        width: 700px;
+        height: 420px;
+        margin-top: 4em;
+        color: black;
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #switch-text {
+        color: black;
+        padding: 0;
+    }
+    #switch{
+
+        color: black;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .outer {
+        color: black;
+    }
+
+    .second {
+        margin-top: 2em;
+        display: block;
+        position: relative;
+        color: black
+    }
+
+    #switch-text {
+        color: black;
+    }
+}
+
+.second ul {
+    padding-left: 0;
+}
+
+div.info {
+    margin-right: 2em;
+    /* padding-left:0;  */
+}
+
+div.info p.info-head {
+    font-weight: bolder;
+}
+
+.genre{
+    list-style: none;
+    display: flex;
+    margin-left:1em;
+}
+
+@media only screen and (max-width: 600px) {
+    .outer {
+        height: 370px;
+        align-content: center;
+        display: block;
+    }
+    .second {
+        height:100%;
+        padding: 0;
+        width: 100%;
+    }
+    .ul-style{
+        list-style: none;
+        margin-left:1em;
+        display: inline !important;
+    }
+    .genre{
+        list-style: none;
+        display: inline-block;
+        margin-left:1em;
+    }
+}
+
+.ul-style{
+    list-style: none;
+    margin-left:1em;
+    display: flex;
+}
+
+.cast-link {
+    text-decoration: none !important;
+}
+
+div.card-body {
+    height: 69px;
+    padding: 0.5em;
+    overflow: hidden;
+    color: black;
+    font-size: 1em;
+    box-shadow: 5px 5px 10px #dbdada;
+}
+
+.card {
+    position: center;
+    margin: auto;
+}
+
+.trailer {
+    margin-bottom: 2em;
+    height: 100%;
+}
+
+.card-img-top {
+    box-shadow: 5px 5px 10px #dbdada;
+}
+
+.card p {
+    text-align: center;
+}
+
+.cast-head {
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+.col-lg-6.second {
+    height:100%;
+    padding: 0;
+}
+
+.topcast {
+    color: black;
+    margin-top: 2em;
+    height: 40px;
+    width: inherit;
+}
+
+.topcast h1 {
+    padding: 0;
+    border-bottom: 5px solid black;
+    height: 50px;
+    font-weight: 900;
+}
+
+.cast-text {
+    overflow: hidden;
+    font-size: 0.9em;
+}

@@ -1,0 +1,135 @@
+.content3 {
+    width: 185px;
+    height: 278px;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.head {
+    margin-left: 1em;
+    margin-top: 5em;
+}
+
+.outer {
+    width: 485px;
+    height: 278px;
+    display: flex;
+    align-items: center;
+    margin-top: 1.5em;
+    margin-left: 2em;
+    padding: 0px;
+    box-shadow: 5px 5px 10px #dbdada;
+}
+
+.know {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    position: absolute;
+    text-decoration: none;
+    width: inherit;
+    bottom: 0;
+    left: 0;
+    padding: 16px;
+}
+
+.know a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.know a {
+    color: inherit;
+}
+
+
+.sidebar3 {
+    width: 298px;
+    height: 278px;
+    padding: 1em;
+    display: block;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+.sidebar3 h4 {
+    color: black;
+}
+
+.sidebar3 span {
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1em;
+    font-size: small;
+}
+
+.sidebar3 p .overview {
+    word-wrap: break-word;
+    white-space: normal;
+    color: #4d4d4d;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    margin-top: 30px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .outer {
+        width: 84%;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        margin-top: 1.5em;
+        margin-left: 2em;
+        padding: 0px;
+        box-shadow: 5px 5px 10px #dbdada;
+    }
+
+    .sidebar3 {
+        width: 298px;
+        height: 278px;
+        padding: 1em;
+        display: block;
+        font-family: 'Source Sans Pro', Arial, sans-serif;
+        font-size: 0.9em;
+        color: rgba(0, 0, 0, 0.6);
+        position: relative;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .heading {
+        margin-top: 5px;
+    }
+
+    .know {
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        position: absolute;
+        text-decoration: none;
+        width:215px;
+        bottom: 0;
+        left: 0;
+        padding: 16px;
+        padding-left: 0;
+    }
+
+    .content3 {
+        width: 185px;
+        height: 250px;
+        line-height: 0;
+        overflow: hidden;
+    }
+
+    .content3 img {
+        width: 100%;
+        position: center;
+        height: 212px;
+        line-height: 0;
+        overflow: hidden;
+    }
+
+    .overview {
+        overflow: hidden;
+        height: 100px;
+    }
+}

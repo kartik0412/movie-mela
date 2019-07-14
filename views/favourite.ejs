@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <style>
+        .remove-button {
+            width: 100%;
+            background: #fafafa;
+            outline: none;
+            border: none;
+            height: 30px;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">MovieMela</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <%if(currentUser){%>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/myfavourite/<%=currentUser._id%>">Favourite</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+
+                <%}else{%>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">Log in</a>
+                </li>
+                <%}%>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/search">
+                <input class="form-control mr-sm-2" type="text" name="name" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    
+    
+    <div style="margin-top: 5em" class="container">
+
+            <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Favourite</h1>
+          
+            <hr class="mt-2 mb-5">
+          
+            <div id='kartik' class="row text-center text-lg-left" style="display: flex">
+            <%data.fav.forEach((element)=>{%>
+                <div style="margin: 1em">
+                    <a href="/display/<%=element['id']%>" style="max-height:268px" class="d-block mb-4 h-100">
+                        <img class="img-fluid img-responsive" style=" cursor: pointer; max-width: 175px;max-height:325px;box-shadow: 5px 5px 10px #dadada" src="<%=element['poster']%>"
+                            alt="<%=element['name']%>">
+                        <form id="removebutton" action="/myfavourite/<%=currentUser._id%>/tag/<%=element['id']%>"
+                            method="POST">
+                            <button type="submit" style=" cursor: pointer; box-shadow: 5px 5px 10px #dadada;color:#7e7d7d"
+                                class="remove-button"><i class="fas fa-times"></i></button>
+                        </form>
+                    </a>
+
+                </div>
+                <%})%>
+
+        </div>
+
+        </div>
+        <script>
+            $("#kartik").on('submit', '#removebutton', function (e) {
+                e.preventDefault();
+                var confirmResponse = confirm('Are you sure?');
+                if (confirmResponse) {
+                    var actionUrl = $(this).attr('action');
+                    $itemToDelete = $(this).parent().parent();
+                    $.ajax({
+                        url: actionUrl,
+                        type: 'DELETE',
+                        itemToDelete: $itemToDelete,
+                        success: function (data) {
+                            this.itemToDelete.remove();
+                        }
+                    })
+                } else {
+                    $(this).find('button').blur();
+                }
+            });
+        </script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+            </script>
+
+</body>
+
+</html>

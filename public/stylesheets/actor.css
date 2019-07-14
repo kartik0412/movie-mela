@@ -1,0 +1,92 @@
+.poster {
+    margin: 1em;
+    float: left;
+}
+
+.poster img {
+    height: 435px;
+    margin-left: 1.5em;
+}
+
+.jumbotron {
+    height: 510px;
+}
+
+.jumbotron h1 {
+    font-weight: bolder;
+    margin-top: 1em;
+    line-height: inherit;
+}
+
+.bio {
+    margin-top: 2.5em;
+    width: 100%;
+}
+
+.bio-text {
+    font-size: 1em;
+    line-height: 1.4em;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
+
+#more {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .jumbotron {
+        height: 496px;
+    }
+    .social{
+        font-size: 0.6em;
+    }
+    .bio {
+        width: 100%;
+    }
+}
+.container{
+    display: block;
+    float: bottom;
+}
+.best {
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    overflow: hidden;
+    width: 150px !important; 
+    height: 225px !important;
+    /* padding: 0  !important; */
+    border-radius: 4px;
+}
+
+.best img {
+    width: 150px;
+    height: 225px;
+    border:1px solid black;
+}
+
+#myBtn {
+    border-radius: 10px;
+    background-color: #00d573;
+    color: white;
+    outline: none;
+    border: none;
+}
+div.jumbotron h3.known{
+    margin-top:0.5em;
+    margin-bottom: 1em;
+}
+.li-head{
+    font-size: 1.5em;
+    font-weight: bolder;
+    margin-top: 1em;
+}
+
+.li-header{
+    padding-left: 0;
+}
